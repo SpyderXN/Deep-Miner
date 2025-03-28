@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://kpyn3lmh6ajn"]
+
+[ext_resource type="PackedScene" uid="uid://2p270s7ogrn7" path="res://Waste/waste.tscn" id="1_1l47v"]
+[ext_resource type="Texture2D" uid="uid://dckm0g6tjau11" path="res://Assets/Waste/Plastic.png" id="2_r0nus"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_m4rrm"]
+radius = 12.0416
+
+[node name="DeepWaste" instance=ExtResource("1_1l47v")]
+speed = 0
+
+[node name="Sprite2D" parent="." index="0"]
+position = Vector2(-1, 0)
+texture = ExtResource("2_r0nus")
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_m4rrm")
+debug_color = Color(0.750362, 0.451759, 0.232842, 0.42)

@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://d36e36fxq4n4a"]
+
+[ext_resource type="PackedScene" uid="uid://wuhbv38iapwt" path="res://FishMain/fish.tscn" id="1_efgt6"]
+[ext_resource type="Texture2D" uid="uid://brdqlpjqdfq1o" path="res://Assets/Fishes.png" id="2_ua5x1"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_efgt6"]
+
+[node name="Fish" instance=ExtResource("1_efgt6")]
+speed = 50
+
+[node name="Sprite2D" parent="." index="0"]
+texture = ExtResource("2_ua5x1")
+hframes = 2
+vframes = 2
+frame = 3
+
+[node name="CollisionShape2D" parent="." index="1"]
+shape = SubResource("CircleShape2D_efgt6")

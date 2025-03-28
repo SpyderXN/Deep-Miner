@@ -1,0 +1,27 @@
+[gd_scene load_steps=5 format=3 uid="uid://2p270s7ogrn7"]
+
+[ext_resource type="Script" uid="uid://jpnovn5fp07h" path="res://Waste/waste.gd" id="1_7o2ur"]
+[ext_resource type="Texture2D" uid="uid://c8l8wwt2owsj4" path="res://Assets/Waste/Bottle.png" id="2_7o2ur"]
+[ext_resource type="AudioStream" uid="uid://dfnwqnesmq30l" path="res://Sounds/collect.wav" id="3_dk1dl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7o2ur"]
+size = Vector2(4, 12)
+
+[node name="Waste" type="Area2D"]
+script = ExtResource("1_7o2ur")
+speed = 150
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -3)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_7o2ur")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -2)
+shape = SubResource("RectangleShape2D_7o2ur")
+
+[node name="sfx" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_dk1dl")
+volume_db = 8.667
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

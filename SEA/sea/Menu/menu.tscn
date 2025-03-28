@@ -1,0 +1,180 @@
+[gd_scene load_steps=28 format=4 uid="uid://baxbk24whh0ys"]
+
+[ext_resource type="Texture2D" uid="uid://ct7jjelulx6av" path="res://Assets/Surface/OceanSurface_1.png" id="1_ofseh"]
+[ext_resource type="Texture2D" uid="uid://io7cynfbrho1" path="res://Assets/Ocean_2.png" id="1_w6voe"]
+[ext_resource type="Script" uid="uid://dhlx1lhk5elo2" path="res://Menu/menu.gd" id="1_xuj3a"]
+[ext_resource type="Texture2D" uid="uid://cmejmncb5fb7s" path="res://Assets/Surface/OceanSurface_2.png" id="2_w6voe"]
+[ext_resource type="Texture2D" uid="uid://xb182ejptxvh" path="res://Assets/Surface/OceanSurface_3.png" id="3_eafcm"]
+[ext_resource type="Texture2D" uid="uid://dorfjoacgxca2" path="res://Assets/Surface/OceanSurface_4.png" id="4_tf6kh"]
+[ext_resource type="Texture2D" uid="uid://dmtayjxredtyr" path="res://Assets/Surface/OceanSurface_5.png" id="5_mf1wf"]
+[ext_resource type="Texture2D" uid="uid://bpcdk8tqbynpi" path="res://Assets/Corals.png" id="7_tf6kh"]
+[ext_resource type="Texture2D" uid="uid://b8a834ops770o" path="res://Assets/Corals_2.png" id="8_mf1wf"]
+[ext_resource type="Texture2D" uid="uid://cgskd6k8ly70q" path="res://Assets/Bubble.png" id="9_mf1wf"]
+[ext_resource type="PackedScene" uid="uid://dvs51bffojjjr" path="res://FishSpawner/fish_spawner.tscn" id="11_5s5no"]
+[ext_resource type="PackedScene" uid="uid://d36e36fxq4n4a" path="res://BlueFish/fish.tscn" id="12_v3yle"]
+[ext_resource type="PackedScene" uid="uid://ek6v6lpemxdi" path="res://GreenFish/fish.tscn" id="13_uu4eq"]
+[ext_resource type="PackedScene" uid="uid://b77cbacibv3y2" path="res://OrangeFish/fish.tscn" id="14_pxa7u"]
+[ext_resource type="Texture2D" uid="uid://dpdpdesphmoui" path="res://Assets/LOGO.png" id="15_uu4eq"]
+[ext_resource type="AudioStream" uid="uid://bl8oj1owksdvd" path="res://Sounds/Menu.mp3" id="15_v3yle"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_xuj3a"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1000, 1, 1)
+angle_min = -73.2
+angle_max = 260.3
+gravity = Vector3(0, -98, 0)
+scale_min = 0.1
+scale_max = 0.2
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xuj3a"]
+texture = ExtResource("1_ofseh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+2:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_0k1h5"]
+texture = ExtResource("2_w6voe")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_cotva"]
+texture = ExtResource("3_eafcm")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_2p233"]
+texture = ExtResource("4_tf6kh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5s5no"]
+texture = ExtResource("5_mf1wf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_v3yle"]
+tile_size = Vector2i(32, 32)
+sources/1 = SubResource("TileSetAtlasSource_xuj3a")
+sources/2 = SubResource("TileSetAtlasSource_0k1h5")
+sources/3 = SubResource("TileSetAtlasSource_cotva")
+sources/4 = SubResource("TileSetAtlasSource_2p233")
+sources/5 = SubResource("TileSetAtlasSource_5s5no")
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_v3yle"]
+texture = ExtResource("7_tf6kh")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_uu4eq"]
+texture = ExtResource("8_mf1wf")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+1:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_pxa7u"]
+tile_size = Vector2i(32, 32)
+sources/0 = SubResource("TileSetAtlasSource_v3yle")
+sources/1 = SubResource("TileSetAtlasSource_uu4eq")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_tf6kh"]
+bg_color = Color(0.1147, 0.37, 0.263625, 1)
+corner_radius_top_left = 10
+corner_radius_top_right = 10
+corner_radius_bottom_right = 10
+corner_radius_bottom_left = 10
+
+[node name="Menu" type="Node2D"]
+script = ExtResource("1_xuj3a")
+
+[node name="Parallax2D" type="Parallax2D" parent="."]
+scroll_offset = Vector2(957, 483)
+
+[node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
+texture = ExtResource("1_w6voe")
+
+[node name="Bubbles" type="GPUParticles2D" parent="."]
+position = Vector2(998, 832)
+amount = 5
+texture = ExtResource("9_mf1wf")
+lifetime = 3.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_xuj3a")
+
+[node name="FishSpawner" parent="." instance=ExtResource("11_5s5no")]
+position = Vector2(344, 0)
+fish_scenes = Array[PackedScene]([ExtResource("12_v3yle"), ExtResource("13_uu4eq"), ExtResource("14_pxa7u")])
+low_value = 309
+high_value = 710
+
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(959, 539)
+zoom = Vector2(1.66, 1.66)
+
+[node name="Ground" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAMABoAAgABAAAAAAANABoAAgABAAAAAAAOABoAAgABAAAAAAAPABoAAgABAAAAAAAQABoAAgABAAAAAAARABoAAgABAAAAAAASABoAAgABAAAAAAATABoAAgABAAAAAAAUABoAAgABAAAAAAAVABoABAABAAAAABAWABoAAQAAAAAAAAAXABoAAQACAAAAAAAYABoAAQACAAAAAAAZABoAAQACAAAAAAAaABoAAQACAAAAAAAbABoAAQACAAAAAAAcABoAAQACAAAAAAAdABoAAQACAAAAAAAeABoAAQACAAAAAAAfABoAAQACAAAAAAAgABoAAQACAAAAAAAhABoAAQACAAAAAAAiABoAAQACAAAAAAAjABoAAQACAAAAAAAkABoAAQACAAAAAAAlABoAAQACAAAAAAAmABoAAQACAAAAAAAnABoAAQACAAAAAAAoABoAAQABAAAAAAApABoAAQAAAAAAAAAqABoABAAAAAAAAAArABoAAgABAAAAAAAsABoAAgABAAAAAAAtABoAAgABAAAAAAAuABoAAgABAAAAAAAvABoAAgABAAAAAAAVABkAAgAAAAAAAFAUABgAAgAAAAAAAFATABcAAgAAAAAAAFASABYAAgAAAAAAAFARABUAAgAAAAAAAFAQABQAAgAAAAAAAFAPABMAAgAAAAAAAFAOABMAAwAAAAAAAAAPABQABAABAAAAABAQABUABAABAAAAABARABYABAABAAAAABASABcABAABAAAAABATABgABAABAAAAABAUABkABAABAAAAABAOABQAAgABAAAAAAANABQAAgABAAAAAAAMABQAAgABAAAAAAALABQAAgABAAAAAAALABUAAgABAAAAAAALABYAAgABAAAAAAALABcAAgABAAAAAAALABgAAgABAAAAAAALABkAAgABAAAAAAAMABkAAgABAAAAAAANABkAAgABAAAAAAAOABkAAgABAAAAAAAPABkAAgABAAAAAAAQABkAAgABAAAAAAARABkAAgABAAAAAAASABkAAgABAAAAAAATABkAAgABAAAAAAASABgAAgABAAAAAAARABcAAgABAAAAAAAQABYAAgABAAAAAAAPABUAAgABAAAAAAANABUAAgABAAAAAAAMABUAAgABAAAAAAAOABUAAgABAAAAAAANABYAAgABAAAAAAAMABYAAgABAAAAAAAMABcAAgABAAAAAAAMABgAAgABAAAAAAANABgAAgABAAAAAAANABcAAgABAAAAAAAOABcAAgABAAAAAAAPABYAAgABAAAAAAAOABYAAgABAAAAAAAOABgAAgABAAAAAAAPABgAAgABAAAAAAAQABgAAgABAAAAAAARABgAAgABAAAAAAAQABcAAgABAAAAAAAPABcAAgABAAAAAAANABMAAwAAAAAAAAAMABMAAwAAAAAAAAALABMAAwAAAAAAAAAqABkAAgAAAAAAAAArABgAAgAAAAAAAAAsABcAAgAAAAAAAAAtABcAAwAAAAAAAAAuABcAAwAAAAAAAAAvABcAAwAAAAAAAAArABkABAABAAAAAAAsABgABAABAAAAAAAtABkAAgABAAAAAAAsABkAAgABAAAAAAAtABgAAgABAAAAAAAuABgAAgABAAAAAAAvABgAAgABAAAAAAAwABgAAgABAAAAAAAwABkAAgABAAAAAAAuABkAAgABAAAAAAAvABkAAgABAAAAAAAwABcAAwAAAAAAAAAwABoAAgABAAAAAAALABoAAgABAAAAAAA=")
+tile_set = SubResource("TileSet_v3yle")
+
+[node name="Corals" type="TileMapLayer" parent="."]
+tile_map_data = PackedByteArray("AAAWABkAAAABAAEAABAXABkAAAAAAAEAAAAYABkAAAAAAAAAAAAZABkAAQABAAAAAAAaABkAAQAAAAAAAAAbABkAAAABAAAAABAcABkAAQAAAAAAAAAdABkAAQABAAAAAAAeABkAAAABAAEAAAAfABkAAQAAAAEAAAAgABkAAQAAAAAAAAAhABkAAQABAAAAAAAiABkAAQAAAAAAAAAjABkAAQABAAAAAAAkABkAAQAAAAEAAAAlABkAAQABAAAAAAAmABkAAQAAAAAAAAAnABkAAQABAAEAAAAoABkAAAAAAAEAAAApABkAAAAAAAAAAAA=")
+tile_set = SubResource("TileSet_pxa7u")
+
+[node name="UI" type="CanvasLayer" parent="."]
+
+[node name="Play" type="Button" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.9999
+offset_top = 60.0
+offset_right = 71.0001
+offset_bottom = 101.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tf6kh")
+text = "Play"
+
+[node name="Exit" type="Button" parent="UI"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -88.9999
+offset_top = 156.0
+offset_right = 71.0001
+offset_bottom = 197.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(1.5, 1.5)
+theme_override_styles/normal = SubResource("StyleBoxFlat_tf6kh")
+text = "Exit"
+
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+energy = 0.1
+blend_mode = 1
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("15_v3yle")
+volume_db = 4.815
+autoplay = true
+parameters/looping = true
+
+[node name="Logo" type="Sprite2D" parent="."]
+position = Vector2(1003, 345)
+scale = Vector2(0.915714, 0.942)
+texture = ExtResource("15_uu4eq")
+
+[connection signal="pressed" from="UI/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="UI/Exit" to="." method="_on_exit_pressed"]

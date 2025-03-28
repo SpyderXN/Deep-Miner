@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvs51bffojjjr"]
+
+[ext_resource type="Script" uid="uid://cpbci34203spa" path="res://FishSpawner/fish_spawner.gd" id="1_c6uyd"]
+
+[node name="FishSpawner" type="Node2D"]
+script = ExtResource("1_c6uyd")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 3.0
+
+[node name="Spawns" type="Node2D" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

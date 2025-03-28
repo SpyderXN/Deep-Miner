@@ -1,0 +1,19 @@
+[gd_scene load_steps=3 format=3 uid="uid://c711v7yrmjubp"]
+
+[ext_resource type="Texture2D" uid="uid://io7cynfbrho1" path="res://Assets/Ocean_2.png" id="1_dyh6w"]
+[ext_resource type="PackedScene" uid="uid://cl4o11w8bfeqy" path="res://GameOverUI/game_over_ui.tscn" id="1_g2khx"]
+
+[node name="GameOver" type="Node2D"]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_dyh6w")
+
+[node name="GameOverUI" parent="CanvasLayer" instance=ExtResource("1_g2khx")]
+visible = true

@@ -1,0 +1,51 @@
+[gd_scene load_steps=9 format=3 uid="uid://b0usnok8ypbww"]
+
+[ext_resource type="Script" uid="uid://bm7ng4fy1p84s" path="res://Player/player.gd" id="1_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://c0sk5gel2w5i7" path="res://Assets/Sub/Sub.png" id="2_4ntmi"]
+[ext_resource type="Texture2D" uid="uid://cgskd6k8ly70q" path="res://Assets/Bubble.png" id="2_btcbx"]
+[ext_resource type="AudioStream" uid="uid://cfq474bf0akj0" path="res://Sounds/water.wav" id="4_gwnis"]
+
+[sub_resource type="Curve" id="Curve_gwnis"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.624788), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_k53q1"]
+curve = SubResource("Curve_gwnis")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_fhl08"]
+particle_flag_disable_z = true
+emission_shape = 3
+emission_box_extents = Vector3(1, 5, 1)
+spread = 67.5
+initial_velocity_max = 25.0
+gravity = Vector3(50, 0, 0)
+scale_min = 0.05
+scale_max = 0.15
+scale_curve = SubResource("CurveTexture_k53q1")
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_4ntmi"]
+radius = 14.3178
+
+[node name="Player" type="CharacterBody2D"]
+script = ExtResource("1_4ntmi")
+
+[node name="GPUParticles2D" type="GPUParticles2D" parent="."]
+position = Vector2(15, 0)
+emitting = false
+amount = 9
+texture = ExtResource("2_btcbx")
+lifetime = 0.3
+randomness = 1.0
+fixed_fps = 60
+process_material = SubResource("ParticleProcessMaterial_fhl08")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_4ntmi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(-2, 0)
+shape = SubResource("CircleShape2D_4ntmi")
+
+[node name="sfx_move" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_gwnis")
+volume_db = -10.0
